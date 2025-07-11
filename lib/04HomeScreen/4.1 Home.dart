@@ -242,172 +242,177 @@ class PromoBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(16),
-      width: double.infinity,
-      height: 160,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Colors.green.shade400,
-            Colors.green.shade600,
-            Colors.green.shade700,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.green.withOpacity(0.3),
-            spreadRadius: 2,
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Stack(
-        children: [
-          // Background Pattern/Image Effect
-          Positioned.fill(
-            left: 290,
-            child: ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(16),
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/hotelimage.jpg'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-          ),
-
-          // Content
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Row(
-              children: [
-                // Left Content
-                Expanded(
-                  flex: 2,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'March Super Sale!!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(
-                              offset: Offset(1, 1),
-                              blurRadius: 3,
-                              color: Colors.black26,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Enjoy exclusive discounts on hotel\nbookings more affordable.',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          height: 1.4,
-                          shadows: [
-                            Shadow(
-                              offset: Offset(1, 1),
-                              blurRadius: 2,
-                              color: Colors.black26,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 12),
-                      GestureDetector(
-                        onTap: () {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Book now clicked!')),
-                          );
-                        },
-                        child: Text(
-                          'Book now!',
-                          style: TextStyle(
-                            color: Colors.yellow.shade300,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.yellow.shade300,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Right Content - Discount Badge
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.green.shade600,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.white, width: 3),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            spreadRadius: 2,
-                            blurRadius: 8,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'SAVE UP TO',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Text(
-                            '50%',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            'OFF',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+      width: 361,
+      height: 125,
+      child: Image.asset('assets/frames/frame2.png'),
     );
+    // Container(
+    //   margin: EdgeInsets.all(16),
+    //   width: double.infinity,
+    //   height: 160,
+    //   decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //       colors: [
+    //         Colors.green.shade400,
+    //         Colors.green.shade600,
+    //         Colors.green.shade700,
+    //       ],
+    //       begin: Alignment.topLeft,
+    //       end: Alignment.bottomRight,
+    //     ),
+    //     borderRadius: BorderRadius.circular(16),
+    //     boxShadow: [
+    //       BoxShadow(
+    //         color: Colors.green.withOpacity(0.3),
+    //         spreadRadius: 2,
+    //         blurRadius: 10,
+    //         offset: Offset(0, 5),
+    //       ),
+    //     ],
+    //   ),
+    //   child: Stack(
+    //     children: [
+    //       // Background Pattern/Image Effect
+    //       Positioned.fill(
+    //         left: 290,
+    //         child: ClipRRect(
+    //           borderRadius: BorderRadiusGeometry.circular(16),
+    //           child: Container(
+    //             width: double.infinity,
+    //             decoration: BoxDecoration(
+    //               image: DecorationImage(
+    //                 image: AssetImage('assets/images/hotelimage.jpg'),
+    //                 fit: BoxFit.fill,
+    //               ),
+    //             ),
+    //           ),
+    //         ),
+    //       ),
+
+    //       // Content
+    //       Padding(
+    //         padding: EdgeInsets.all(20),
+    //         child: Row(
+    //           children: [
+    //             // Left Content
+    //             Expanded(
+    //               flex: 2,
+    //               child: Column(
+    //                 crossAxisAlignment: CrossAxisAlignment.start,
+    //                 mainAxisAlignment: MainAxisAlignment.center,
+    //                 children: [
+    //                   Text(
+    //                     'March Super Sale!!',
+    //                     style: TextStyle(
+    //                       color: Colors.white,
+    //                       fontSize: 22,
+    //                       fontWeight: FontWeight.bold,
+    //                       shadows: [
+    //                         Shadow(
+    //                           offset: Offset(1, 1),
+    //                           blurRadius: 3,
+    //                           color: Colors.black26,
+    //                         ),
+    //                       ],
+    //                     ),
+    //                   ),
+    //                   SizedBox(height: 8),
+    //                   Text(
+    //                     'Enjoy exclusive discounts on hotel\nbookings more affordable.',
+    //                     style: TextStyle(
+    //                       color: Colors.white,
+    //                       fontSize: 14,
+    //                       height: 1.4,
+    //                       shadows: [
+    //                         Shadow(
+    //                           offset: Offset(1, 1),
+    //                           blurRadius: 2,
+    //                           color: Colors.black26,
+    //                         ),
+    //                       ],
+    //                     ),
+    //                   ),
+    //                   SizedBox(height: 12),
+    //                   GestureDetector(
+    //                     onTap: () {
+    //                       ScaffoldMessenger.of(context).showSnackBar(
+    //                         SnackBar(content: Text('Book now clicked!')),
+    //                       );
+    //                     },
+    //                     child: Text(
+    //                       'Book now!',
+    //                       style: TextStyle(
+    //                         color: Colors.yellow.shade300,
+    //                         fontSize: 16,
+    //                         fontWeight: FontWeight.bold,
+    //                         decoration: TextDecoration.underline,
+    //                         decorationColor: Colors.yellow.shade300,
+    //                       ),
+    //                     ),
+    //                   ),
+    //                 ],
+    //               ),
+    //             ),
+
+    //             // Right Content - Discount Badge
+    //             Expanded(
+    //               flex: 1,
+    //               child: Container(
+    //                 alignment: Alignment.center,
+    //                 child: Container(
+    //                   width: 100,
+    //                   height: 100,
+    //                   decoration: BoxDecoration(
+    //                     color: Colors.green.shade600,
+    //                     shape: BoxShape.circle,
+    //                     border: Border.all(color: Colors.white, width: 3),
+    //                     boxShadow: [
+    //                       BoxShadow(
+    //                         color: Colors.black26,
+    //                         spreadRadius: 2,
+    //                         blurRadius: 8,
+    //                         offset: Offset(0, 3),
+    //                       ),
+    //                     ],
+    //                   ),
+    //                   child: Column(
+    //                     mainAxisAlignment: MainAxisAlignment.center,
+    //                     children: [
+    //                       Text(
+    //                         'SAVE UP TO',
+    //                         style: TextStyle(
+    //                           color: Colors.white,
+    //                           fontSize: 10,
+    //                           fontWeight: FontWeight.w600,
+    //                         ),
+    //                       ),
+    //                       Text(
+    //                         '50%',
+    //                         style: TextStyle(
+    //                           color: Colors.white,
+    //                           fontSize: 24,
+    //                           fontWeight: FontWeight.bold,
+    //                         ),
+    //                       ),
+    //                       Text(
+    //                         'OFF',
+    //                         style: TextStyle(
+    //                           color: Colors.white,
+    //                           fontSize: 12,
+    //                           fontWeight: FontWeight.w600,
+    //                         ),
+    //                       ),
+    //                     ],
+    //                   ),
+    //                 ),
+    //               ),
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }
 
