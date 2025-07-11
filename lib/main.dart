@@ -1,5 +1,6 @@
-
 import 'package:drodify_project/04HomeScreen/4.1%20Home.dart';
+import 'package:drodify_project/04HomeScreen/4.8%20Search%20Result-empty.dart';
+import 'package:drodify_project/04HomeScreen/4.9%20notification-default.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: HomePage(),
+      home: SearchResultEmpty(),
     );
   }
 }

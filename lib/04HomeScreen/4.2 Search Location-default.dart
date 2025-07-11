@@ -6,112 +6,116 @@ class SearchLocationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //backgroundColor: Colors.white,
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(26)),
-                  boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Center(
-                        child: Text(
-                          "Search Location",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+    return SafeArea(
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        "Search Location",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: Icon(Icons.close, size: 26),
-                    ),
-                  ],
-                ),
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Icon(Icons.close, size: 26),
+                  ),
+                ],
               ),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.all(16),
-                child: GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(20.0))),
-                      isScrollControlled: true,
-                      builder: (context) => Container(
-                        height: MediaQuery.of(context).size.height * 0.8,
-                        child: LocationSearchScreen(),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(20.0),
                       ),
-                    );
-                  },
-                  child: AbsorbPointer(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        hintText: "Where do you want to stay?",
-                        filled: true,
-                        fillColor: Colors.grey[100],
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 0),
+                    ),
+                    isScrollControlled: true,
+                    builder: (context) => Container(
+                      height: MediaQuery.of(context).size.height * 0.8,
+                      child: LocationSearchScreen(),
+                    ),
+                  );
+                },
+                child: AbsorbPointer(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.search),
+                      hintText: "Where do you want to stay?",
+                      filled: true,
+                      fillColor: Colors.grey[100],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
                       ),
+                      contentPadding: EdgeInsets.symmetric(vertical: 0),
                     ),
                   ),
                 ),
               ),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    Icon(Icons.my_location, color: Colors.green),
-                    SizedBox(width: 8),
-                    Text("Near Me",
-                        style: TextStyle(fontWeight: FontWeight.w500)),
-                  ],
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  Icon(Icons.my_location, color: Colors.green),
+                  SizedBox(width: 8),
+                  Text(
+                    "Near Me",
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(child: Divider(height: 6)),
+          SliverToBoxAdapter(
+            child: _SectionHeader(title: "Recently Searched", onClear: () {}),
+          ),
+          SliverToBoxAdapter(child: _RecentlySearchedList()),
+          SliverToBoxAdapter(child: Divider(height: 6)),
+          SliverToBoxAdapter(
+            child: _SectionHeader(title: "Recently Viewed", onClear: () {}),
+          ),
+          SliverToBoxAdapter(child: _RecentlyViewedList()),
+          SliverToBoxAdapter(child: Divider(height: 6)),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Popular Destination",
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            SliverToBoxAdapter(child: Divider(height: 12)),
-            SliverToBoxAdapter(
-              child: _SectionHeader(title: "Recently Searched", onClear: () {}),
-            ),
-            SliverToBoxAdapter(child: _RecentlySearchedList()),
-            SliverToBoxAdapter(child: Divider(height: 12)),
-            SliverToBoxAdapter(
-              child: _SectionHeader(title: "Recently Viewed", onClear: () {}),
-            ),
-            SliverToBoxAdapter(child: _RecentlyViewedList()),
-            SliverToBoxAdapter(child: Divider(height: 12)),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text("Popular Destination",
-                      style: TextStyle(fontWeight: FontWeight.bold)),
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(child: _PopularDestinations()),
-            SliverToBoxAdapter(child: SizedBox(height: 24)),
-          ],
-        ),
+          ),
+          SliverToBoxAdapter(child: _PopularDestinations()),
+          SliverToBoxAdapter(child: SizedBox(height: 24)),
+        ],
       ),
     );
   }
@@ -188,7 +192,9 @@ class _RecentlySearchedItem extends StatelessWidget {
     return ListTile(
       dense: true, // Makes the tile more compact
       contentPadding: EdgeInsets.symmetric(
-          horizontal: 0, vertical: 2), // Reduce vertical space
+        horizontal: 0,
+        vertical: 0,
+      ), // Reduce vertical space
       leading: Icon(Icons.location_on, color: Colors.black54, size: 22),
       title: Text(title, style: TextStyle(fontWeight: FontWeight.w500)),
       subtitle: Text(subtitle, style: TextStyle(fontSize: 12)),
@@ -197,7 +203,7 @@ class _RecentlySearchedItem extends StatelessWidget {
         children: [
           if (tag.isNotEmpty)
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               decoration: BoxDecoration(
                 color: Colors.grey[200],
                 borderRadius: BorderRadius.circular(8),
@@ -207,13 +213,12 @@ class _RecentlySearchedItem extends StatelessWidget {
           if (hotels.isNotEmpty)
             Padding(
               padding: EdgeInsets.only(left: 8),
-              child: Text(hotels,
-                  style: TextStyle(fontSize: 11, color: Colors.grey[700])),
+              child: Text(
+                hotels,
+                style: TextStyle(fontSize: 11, color: Colors.grey[700]),
+              ),
             ),
-          IconButton(
-            icon: Icon(Icons.close, size: 18),
-            onPressed: () {},
-          ),
+          IconButton(icon: Icon(Icons.close, size: 18), onPressed: () {}),
         ],
       ),
     );
@@ -277,17 +282,22 @@ class _RecentlyViewedItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(title,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis),
+                Text(
+                  title,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                ),
                 Row(
                   children: [
                     Icon(Icons.location_on, size: 12, color: Colors.grey),
                     SizedBox(width: 2),
                     Expanded(
-                        child: Text(subtitle,
-                            style: TextStyle(fontSize: 11),
-                            overflow: TextOverflow.ellipsis)),
+                      child: Text(
+                        subtitle,
+                        style: TextStyle(fontSize: 11),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ],
                 ),
                 Row(
@@ -296,8 +306,10 @@ class _RecentlyViewedItem extends StatelessWidget {
                     Text(rating.toString(), style: TextStyle(fontSize: 12)),
                     Spacer(),
                     Text(price, style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text(" /night",
-                        style: TextStyle(fontSize: 11, color: Colors.grey)),
+                    Text(
+                      " /night",
+                      style: TextStyle(fontSize: 11, color: Colors.grey),
+                    ),
                   ],
                 ),
               ],
@@ -327,7 +339,7 @@ class _PopularDestinations extends StatelessWidget {
     "Surakarta",
     "New York",
     "Bogor",
-    "West Java"
+    "West Java",
   ];
   @override
   Widget build(BuildContext context) {
@@ -337,10 +349,7 @@ class _PopularDestinations extends StatelessWidget {
         spacing: 8,
         runSpacing: 8,
         children: destinations
-            .map((d) => Chip(
-                  label: Text(d),
-                  backgroundColor: Colors.grey[100],
-                ))
+            .map((d) => Chip(label: Text(d), backgroundColor: Colors.grey[100]))
             .toList(),
       ),
     );

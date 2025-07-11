@@ -26,7 +26,7 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
     'September',
     'October',
     'November',
-    'December'
+    'December',
   ];
 
   @override
@@ -120,12 +120,14 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(),
-        width: double.infinity,
-        height: double.infinity,
-        padding: const EdgeInsets.all(16),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -133,9 +135,7 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
             Container(
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(color: Colors.grey.shade100),
-                ),
+                border: Border(bottom: BorderSide(color: Colors.grey.shade100)),
               ),
               child: Container(
                 width: double.infinity,
@@ -167,10 +167,7 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
               ),
             ),
 
-            Divider(
-              thickness: 1,
-              color: Colors.white,
-            ), // Month navigation
+            Divider(thickness: 1, color: Colors.white), // Month navigation
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -181,7 +178,9 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
                 Text(
                   '${months[currentMonth.month - 1]} ${currentMonth.year}',
                   style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w500),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 GestureDetector(
                   onTap: _nextMonth,
@@ -228,20 +227,93 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
                   final days = _getDaysInMonth();
                   final date = days[index];
                   final isCurrentMonth = _isCurrentMonth(date);
-                  final isSelected = _isSelectedDate(date);
+                  final isCheckIn =
+                      checkInDate != null && _isSameDay(date, checkInDate!);
+                  final isCheckOut =
+                      checkOutDate != null && _isSameDay(date, checkOutDate!);
                   final isInRange = _isInRange(date);
+
+                  // For continuous border effect
+                  BorderRadius? borderRadius;
+                  if (isCheckIn && isCheckOut) {
+                    borderRadius = BorderRadius.circular(8);
+                  } else if (isCheckIn) {
+                    borderRadius = const BorderRadius.horizontal(
+                      left: Radius.circular(8),
+                    );
+                  } else if (isCheckOut) {
+                    borderRadius = const BorderRadius.horizontal(
+                      right: Radius.circular(8),
+                    );
+                  } else {
+                    borderRadius = BorderRadius.zero;
+                  }
+
+                  Color greenColor = const Color(0xFF00C853);
+
+                  Color? bgColor;
+                  if (isCheckIn || isCheckOut) {
+                    bgColor = greenColor;
+                  } else {
+                    bgColor = Colors.transparent;
+                  }
+
+                  // Build border for continuous effect
+                  BorderSide green = BorderSide(color: greenColor, width: 2);
+                  BorderSide none = BorderSide.none;
+                  BoxBorder? border;
+
+                  if (isCheckIn &&
+                      checkOutDate != null &&
+                      checkInDate != checkOutDate) {
+                    // Check-in: green border on right, top, bottom
+                    border = Border(
+                      left: none,
+                      right: green,
+                      top: green,
+                      bottom: green,
+                    );
+                  } else if (isCheckOut &&
+                      checkInDate != null &&
+                      checkInDate != checkOutDate) {
+                    // Check-out: green border on left, top, bottom
+                    border = Border(
+                      left: green,
+                      right: none,
+                      top: green,
+                      bottom: green,
+                    );
+                  } else if (isInRange) {
+                    // In-range: green border top/bottom only, no left/right
+                    border = Border(
+                      left: none,
+                      right: none,
+                      top: green,
+                      bottom: green,
+                    );
+                  } else {
+                    border = null;
+                  }
+
+                  Color textColor;
+                  if (isCheckIn || isCheckOut) {
+                    textColor = Colors.white;
+                  } else if (isInRange) {
+                    textColor = greenColor;
+                  } else if (isCurrentMonth) {
+                    textColor = Colors.black;
+                  } else {
+                    textColor = Colors.grey[400]!;
+                  }
 
                   return GestureDetector(
                     onTap: isCurrentMonth ? () => _selectDate(date) : null,
                     child: Container(
                       margin: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
-                        color: isSelected
-                            ? Colors.green
-                            : isInRange
-                                ? Colors.green.withOpacity(0.1)
-                                : Colors.transparent,
-                        borderRadius: BorderRadius.circular(8),
+                        color: bgColor,
+                        borderRadius: borderRadius,
+                        border: border,
                       ),
                       alignment: Alignment.center,
                       child: Text(
@@ -249,11 +321,7 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: isSelected
-                              ? Colors.white
-                              : isCurrentMonth
-                                  ? Colors.black
-                                  : Colors.grey[400],
+                          color: textColor,
                         ),
                       ),
                     ),
@@ -271,23 +339,25 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
                     children: [
                       Text(
                         'Check in',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                       ),
                       const SizedBox(height: 10),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 8),
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey[300]!),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.calendar_today,
-                                size: 16, color: Colors.grey[600]),
+                            Icon(
+                              Icons.calendar_today,
+                              size: 16,
+                              color: Colors.grey[600],
+                            ),
                             const SizedBox(width: 8),
                             Text(
                               _formatDate(checkInDate),
@@ -299,33 +369,32 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  width: 12,
-                  height: 10,
-                ),
+                const SizedBox(width: 12, height: 10),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Check out',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey[600],
-                        ),
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                       ),
                       const SizedBox(height: 4),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 8),
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.grey[300]!),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.calendar_today,
-                                size: 16, color: Colors.grey[600]),
+                            Icon(
+                              Icons.calendar_today,
+                              size: 16,
+                              color: Colors.grey[600],
+                            ),
                             const SizedBox(width: 8),
                             Text(
                               _formatDate(checkOutDate),
@@ -347,10 +416,9 @@ class _CustomDatePickerDialogState extends State<CustomDatePickerDialog> {
               child: ElevatedButton(
                 onPressed: () {
                   // Handle confirm action
-                  Navigator.of(context).pop({
-                    'checkIn': checkInDate,
-                    'checkOut': checkOutDate,
-                  });
+                  Navigator.of(
+                    context,
+                  ).pop({'checkIn': checkInDate, 'checkOut': checkOutDate});
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,

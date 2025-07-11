@@ -1,5 +1,6 @@
 import 'package:drodify_project/04HomeScreen/4.4%20select%20date.dart';
 import 'package:drodify_project/04HomeScreen/4.5%20Add%20Guest.dart';
+import 'package:drodify_project/04HomeScreen/4.9%20notification-default.dart';
 import 'package:flutter/material.dart';
 import '4.2 Search Location-default.dart';
 
@@ -41,22 +42,29 @@ class HomePage extends StatelessWidget {
                     SizedBox(height: 1),
                     Text(
                       'Book Your Stay, Start Your Journey!',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    )
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
                   ],
                 ),
                 Spacer(),
                 Container(
                   padding: EdgeInsets.only(right: 10),
-                  child: CircleAvatar(
-                    radius: 22,
-                    backgroundColor: const Color.fromARGB(255, 25, 116, 28),
-                    child: Icon(
-                      Icons.notifications_none,
-                      color: Colors.white,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotificationScreen(),
+                        ),
+                      );
+                    },
+                    child: CircleAvatar(
+                      radius: 22,
+                      backgroundColor: const Color.fromARGB(255, 25, 116, 28),
+                      child: Icon(
+                        Icons.notifications_none,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -103,14 +111,13 @@ class SearchCard extends StatelessWidget {
                 showModalBottomSheet(
                   context: context,
                   isScrollControlled: true,
-                  backgroundColor:
-                      Colors.transparent, // Important for visible curve!
+                  backgroundColor: Colors.transparent,
                   builder: (context) => Container(
                     height: MediaQuery.of(context).size.height * 0.8,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(16), // Set your desired curve here
+                        top: Radius.circular(26),
                       ),
                     ),
                     child: SearchLocationScreen(),
@@ -119,7 +126,9 @@ class SearchCard extends StatelessWidget {
               },
               child: AbsorbPointer(
                 child: CustomInput(
-                    icon: Icons.search, hint: "Search address, city, zip"),
+                  icon: Icons.search,
+                  hint: "Search address, city, zip",
+                ),
               ),
             ),
             SizedBox(height: 10),
@@ -141,36 +150,42 @@ class SearchCard extends StatelessWidget {
               },
               child: AbsorbPointer(
                 child: CustomInput(
-                    icon: Icons.calendar_today, hint: "Check In - Check Out"),
+                  icon: Icons.calendar_today,
+                  hint: "Check In - Check Out",
+                ),
               ),
             ),
             SizedBox(height: 10),
             Row(
               children: [
                 Expanded(
-                  child:
-                      CustomInput(icon: Icons.home_work_outlined, hint: "Type"),
+                  child: CustomInput(
+                    icon: Icons.home_work_outlined,
+                    hint: "Type",
+                  ),
                 ),
                 SizedBox(width: 10),
                 Expanded(
                   child: GestureDetector(
-                      onTap: () {
-                        showModalBottomSheet(
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (context) => Container(
-                              height: MediaQuery.of(context).size.height * 0.45,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(16),
-                                ),
-                              ),
-                              child: AddGuestSection()),
-                        );
-                      },
-                      child: AbsorbPointer(
-                          child: CustomInput(
-                              icon: Icons.person, hint: "1 Guest"))),
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (context) => Container(
+                          height: MediaQuery.of(context).size.height * 0.45,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(16),
+                            ),
+                          ),
+                          child: AddGuestSection(),
+                        ),
+                      );
+                    },
+                    child: AbsorbPointer(
+                      child: CustomInput(icon: Icons.person, hint: "1 Guest"),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -186,10 +201,12 @@ class SearchCard extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(16),
                 ),
-                child: Text('Search',
-                    style: TextStyle(color: Colors.white, fontSize: 16)),
+                child: Text(
+                  'Search',
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -225,181 +242,174 @@ class PromoBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(20),
-      height: 125,
-      width: 361,
-      child: Image.asset('assets/frames/frame2.png'),
+      margin: EdgeInsets.all(16),
+      width: double.infinity,
+      height: 160,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.green.shade400,
+            Colors.green.shade600,
+            Colors.green.shade700,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.green.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Stack(
+        children: [
+          // Background Pattern/Image Effect
+          Positioned.fill(
+            left: 290,
+            child: ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(16),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/hotelimage.jpg'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // Content
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Row(
+              children: [
+                // Left Content
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'March Super Sale!!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                              offset: Offset(1, 1),
+                              blurRadius: 3,
+                              color: Colors.black26,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Enjoy exclusive discounts on hotel\nbookings more affordable.',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          height: 1.4,
+                          shadows: [
+                            Shadow(
+                              offset: Offset(1, 1),
+                              blurRadius: 2,
+                              color: Colors.black26,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 12),
+                      GestureDetector(
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Book now clicked!')),
+                          );
+                        },
+                        child: Text(
+                          'Book now!',
+                          style: TextStyle(
+                            color: Colors.yellow.shade300,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.yellow.shade300,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Right Content - Discount Badge
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade600,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 3),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            spreadRadius: 2,
+                            blurRadius: 8,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'SAVE UP TO',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            '50%',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'OFF',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
-// Container(
-//       margin: EdgeInsets.all(16),
-//       width: double.infinity,
-//       height: 160,
-//       decoration: BoxDecoration(
-//         gradient: LinearGradient(
-//           colors: [
-//             Colors.green.shade400,
-//             Colors.green.shade600,
-//             Colors.green.shade700,
-//           ],
-//           begin: Alignment.topLeft,
-//           end: Alignment.bottomRight,
-//         ),
-//         borderRadius: BorderRadius.circular(16),
-//         boxShadow: [
-//           BoxShadow(
-//             color: Colors.green.withOpacity(0.3),
-//             spreadRadius: 2,
-//             blurRadius: 10,
-//             offset: Offset(0, 5),
-//           ),
-//         ],
-//       ),
-//       child: Stack(
-//         children: [
-//           // Background Pattern/Image Effect
-//           Positioned.fill(
-//             left: 290,
-//             child: ClipRRect(
-//               borderRadius: BorderRadiusGeometry.circular(16),
-//               child: Container(
-//                 width: double.infinity,
-//                 decoration: BoxDecoration(
-//                   image: DecorationImage(
-//                       image: AssetImage('assets/images/hotelimage.jpg'),
-//                       fit: BoxFit.fill),
-//                 ),
-//               ),
-//             ),
-//           ),
-
-//           // Content
-//           Padding(
-//             padding: EdgeInsets.all(20),
-//             child: Row(
-//               children: [
-//                 // Left Content
-//                 Expanded(
-//                   flex: 2,
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       Text(
-//                         'March Super Sale!!',
-//                         style: TextStyle(
-//                           color: Colors.white,
-//                           fontSize: 22,
-//                           fontWeight: FontWeight.bold,
-//                           shadows: [
-//                             Shadow(
-//                               offset: Offset(1, 1),
-//                               blurRadius: 3,
-//                               color: Colors.black26,
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       SizedBox(height: 8),
-//                       Text(
-//                         'Enjoy exclusive discounts on hotel\nbookings more affordable.',
-//                         style: TextStyle(
-//                           color: Colors.white,
-//                           fontSize: 14,
-//                           height: 1.4,
-//                           shadows: [
-//                             Shadow(
-//                               offset: Offset(1, 1),
-//                               blurRadius: 2,
-//                               color: Colors.black26,
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       SizedBox(height: 12),
-//                       GestureDetector(
-//                         onTap: () {
-//                           ScaffoldMessenger.of(context).showSnackBar(
-//                             SnackBar(content: Text('Book now clicked!')),
-//                           );
-//                         },
-//                         child: Text(
-//                           'Book now!',
-//                           style: TextStyle(
-//                             color: Colors.yellow.shade300,
-//                             fontSize: 16,
-//                             fontWeight: FontWeight.bold,
-//                             decoration: TextDecoration.underline,
-//                             decorationColor: Colors.yellow.shade300,
-//                           ),
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ),
-
-//                 // Right Content - Discount Badge
-//                 Expanded(
-//                   flex: 1,
-//                   child: Container(
-//                     alignment: Alignment.center,
-//                     child: Container(
-//                       width: 100,
-//                       height: 100,
-//                       decoration: BoxDecoration(
-//                         color: Colors.green.shade600,
-//                         shape: BoxShape.circle,
-//                         border: Border.all(color: Colors.white, width: 3),
-//                         boxShadow: [
-//                           BoxShadow(
-//                             color: Colors.black26,
-//                             spreadRadius: 2,
-//                             blurRadius: 8,
-//                             offset: Offset(0, 3),
-//                           ),
-//                         ],
-//                       ),
-//                       child: Column(
-//                         mainAxisAlignment: MainAxisAlignment.center,
-//                         children: [
-//                           Text(
-//                             'SAVE UP TO',
-//                             style: TextStyle(
-//                               color: Colors.white,
-//                               fontSize: 10,
-//                               fontWeight: FontWeight.w600,
-//                             ),
-//                           ),
-//                           Text(
-//                             '50%',
-//                             style: TextStyle(
-//                               color: Colors.white,
-//                               fontSize: 24,
-//                               fontWeight: FontWeight.bold,
-//                             ),
-//                           ),
-//                           Text(
-//                             'OFF',
-//                             style: TextStyle(
-//                               color: Colors.white,
-//                               fontSize: 12,
-//                               fontWeight: FontWeight.w600,
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class RecommendationsSection extends StatelessWidget {
   const RecommendationsSection({super.key});
@@ -419,8 +429,10 @@ class RecommendationsSection extends StatelessWidget {
               Spacer(),
               Text(
                 "See more",
-                style:
-                    TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
@@ -535,8 +547,10 @@ class HotelCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(price, style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text(" /night",
-                        style: TextStyle(fontSize: 11, color: Colors.grey)),
+                    Text(
+                      " /night",
+                      style: TextStyle(fontSize: 11, color: Colors.grey),
+                    ),
                     Spacer(),
                     Icon(Icons.star, color: Colors.amber, size: 16),
                     Text(rating.toString(), style: TextStyle(fontSize: 12)),
@@ -569,7 +583,9 @@ class CustomBottomNavBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
         BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border), label: "Favorite"),
+          icon: Icon(Icons.favorite_border),
+          label: "Favorite",
+        ),
         BottomNavigationBarItem(
           icon: Center(
             child: Align(
