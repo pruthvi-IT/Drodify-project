@@ -18,8 +18,11 @@ class SearchResultEmpty extends StatelessWidget {
         backgroundColor: Colors.transparent,
         //elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios,
-              color: Colors.black, size: 20), // Adjust size if needed
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+            size: 20,
+          ), // Adjust size if needed
           onPressed: () {
             // Handle back button
           },
@@ -29,8 +32,9 @@ class SearchResultEmpty extends StatelessWidget {
             0, // Remove default title spacing to maximize horizontal space for title
         title: ConstrainedBox(
           // Use ConstrainedBox to limit the width of the title
-          constraints:
-              BoxConstraints(maxWidth: screenWidth - actionsWidth - 16.0 * 2),
+          constraints: BoxConstraints(
+            maxWidth: screenWidth - actionsWidth - 16.0 * 2,
+          ),
           child: Container(
             height: 60,
             width: 500, // Ensure it takes full width available
@@ -44,30 +48,33 @@ class SearchResultEmpty extends StatelessWidget {
                   .min, // Essential to allow the row to size itself to children
               children: [
                 Padding(padding: EdgeInsets.only(left: 8)), // Reduced padding
-                Icon(Icons.search,
-                    color: Colors.grey, size: 20), // Adjust size if needed
+                Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                  size: 20,
+                ), // Adjust size if needed
                 SizedBox(width: 3), // Reduced spacing
                 Text(
                   'Bali, Indonesia',
                   style: TextStyle(
-                      color: Colors.black, fontSize: 14), // Smaller font size
+                    color: Colors.black,
+                    fontSize: 14,
+                  ), // Smaller font size
                   overflow: TextOverflow.ellipsis, // Handle overflow
                   maxLines: 1,
                 ),
                 SizedBox(width: 8), // Reduced spacing
                 // Separator
-                Container(
-                  height: 20,
-                  width: 1,
-                  color: Colors.grey[400],
-                ),
+                Container(height: 20, width: 1, color: Colors.grey[400]),
                 SizedBox(width: 8), // Reduced spacing
                 Expanded(
                   // Allow date/guest text to expand
                   child: Text(
                     '11-14 Mar • 2 Guests',
                     style: TextStyle(
-                        color: Colors.black, fontSize: 14), // Smaller font size
+                      color: Colors.black,
+                      fontSize: 14,
+                    ), // Smaller font size
                     overflow: TextOverflow.ellipsis, // Handle overflow
                     maxLines: 1,
                   ),
@@ -122,10 +129,7 @@ class SearchResultEmpty extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: Text(
                       "We couldn't find any matches for your search. Try using different keywords or adjusting your filters.",
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 15,
-                      ),
+                      style: TextStyle(color: Colors.grey[600], fontSize: 15),
                       textAlign: TextAlign.center,
                     ),
                   ),

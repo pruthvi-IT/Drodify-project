@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '4.3search  location-typing.dart';
 
 class SearchLocationScreen extends StatelessWidget {
@@ -6,116 +7,154 @@ class SearchLocationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
-              ),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Text(
-                        "Search Location",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+    return Scaffold(
+      backgroundColor: Color(0xFFF7F7F7),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        toolbarHeight: 0,
+      ),
+      body: Container(
+        width: 393,
+        height: 852,
+        decoration: BoxDecoration(
+          color: Color(0xFFF7F7F7),
+          borderRadius: BorderRadius.circular(32),
+        ),
+
+        child: SafeArea(
+          child: Stack(
+            children: [
+              CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 16,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(16),
+                        ),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black12, blurRadius: 4),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Center(
+                              child: Text(
+                                "Search Location",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: Icon(Icons.close, size: 26),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(20.0),
+                              ),
+                            ),
+                            isScrollControlled: true,
+                            builder: (context) => Container(
+                              height: MediaQuery.of(context).size.height * 0.8,
+                              child: LocationSearchScreen(),
+                            ),
+                          );
+                        },
+                        child: AbsorbPointer(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.search),
+                              hintText: "Where do you want to stay?",
+                              filled: true,
+                              fillColor: Colors.grey[100],
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide.none,
+                              ),
+                              contentPadding: EdgeInsets.symmetric(vertical: 0),
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Icon(Icons.close, size: 26),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(10),
-              child: GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(20.0),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
+                        children: [
+                          Icon(Icons.my_location, color: Colors.green),
+                          SizedBox(width: 8),
+                          Text(
+                            "Near Me",
+                            style: TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                        ],
                       ),
                     ),
-                    isScrollControlled: true,
-                    builder: (context) => Container(
-                      height: MediaQuery.of(context).size.height * 0.8,
-                      child: LocationSearchScreen(),
+                  ),
+                  SliverToBoxAdapter(child: Divider(height: 6)),
+                  SliverToBoxAdapter(
+                    child: _SectionHeader(
+                      title: "Recently Searched",
+                      onClear: () {},
                     ),
-                  );
-                },
-                child: AbsorbPointer(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search),
-                      hintText: "Where do you want to stay?",
-                      filled: true,
-                      fillColor: Colors.grey[100],
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
+                  ),
+                  SliverToBoxAdapter(child: _RecentlySearchedList()),
+                  SliverToBoxAdapter(child: Divider(height: 6)),
+                  SliverToBoxAdapter(
+                    child: _SectionHeader(
+                      title: "Recently Viewed",
+                      onClear: () {},
+                    ),
+                  ),
+                  SliverToBoxAdapter(child: _RecentlyViewedList()),
+                  SliverToBoxAdapter(child: Divider(height: 6)),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
                       ),
-                      contentPadding: EdgeInsets.symmetric(vertical: 0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "Popular Destination",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                children: [
-                  Icon(Icons.my_location, color: Colors.green),
-                  SizedBox(width: 8),
-                  Text(
-                    "Near Me",
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
+                  SliverToBoxAdapter(child: _PopularDestinations()),
+                  SliverToBoxAdapter(child: SizedBox(height: 24)),
                 ],
               ),
-            ),
+            ],
           ),
-          SliverToBoxAdapter(child: Divider(height: 6)),
-          SliverToBoxAdapter(
-            child: _SectionHeader(title: "Recently Searched", onClear: () {}),
-          ),
-          SliverToBoxAdapter(child: _RecentlySearchedList()),
-          SliverToBoxAdapter(child: Divider(height: 6)),
-          SliverToBoxAdapter(
-            child: _SectionHeader(title: "Recently Viewed", onClear: () {}),
-          ),
-          SliverToBoxAdapter(child: _RecentlyViewedList()),
-          SliverToBoxAdapter(child: Divider(height: 6)),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Popular Destination",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(child: _PopularDestinations()),
-          SliverToBoxAdapter(child: SizedBox(height: 24)),
-        ],
+        ),
       ),
     );
   }

@@ -47,15 +47,16 @@ class NotificationScreen extends StatelessWidget {
                       showModalBottomSheet(
                         context: context,
                         isScrollControlled: true,
-                        
-                        builder: (context) => FilterBottomSheet(),
+
+                        builder: (context) => FilterBottomSheetN(),
                       );
                     },
                     child: CircleAvatar(
                       backgroundColor: Colors.white.withOpacity(0.2),
                       radius: 20,
-                      backgroundImage:
-                          AssetImage('assets/icons/Icon Button Light.png'),
+                      backgroundImage: AssetImage(
+                        'assets/icons/SlidersHorizontal.png',
+                      ),
                     ),
                   ),
                 ],

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class FilterBottomSheet extends StatefulWidget {
+class FilterBottomSheetN extends StatefulWidget {
   @override
-  _FilterBottomSheetState createState() => _FilterBottomSheetState();
+  _FilterBottomSheetNState createState() => _FilterBottomSheetNState();
 }
 
-class _FilterBottomSheetState extends State<FilterBottomSheet> {
+class _FilterBottomSheetNState extends State<FilterBottomSheetN> {
   String selectedTime = "Last 7 days";
   Map<String, bool> categories = {
     "Booking Updates": true,
@@ -251,12 +251,3 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   }
 }
 
-// Usage example - how to show the modal
-void showFilterModal(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    backgroundColor: Colors.transparent,
-    isScrollControlled: true,
-    builder: (context) => FilterBottomSheet(),
-  );
-}
