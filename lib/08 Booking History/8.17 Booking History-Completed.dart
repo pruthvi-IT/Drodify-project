@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BookingHistory extends StatelessWidget {
-  const BookingHistory({super.key});
+class BookingHistoryScreenCompleted extends StatelessWidget {
+  const BookingHistoryScreenCompleted({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,7 @@ class BookingHistory extends StatelessWidget {
           elevation: 0,
           backgroundColor: null,
           flexibleSpace: Container(
+            height: 120,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color.fromARGB(255, 92, 195, 138), Color(0xFF0A8F4B)],
@@ -73,28 +74,28 @@ class BookingHistory extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   _BookingCard(
-                    image: 'assets/images/himage.png',
-                    hotelName: 'Emerald Beach Hotel',
-                    location: 'Kuta, Badung, Bali',
-                    room: 'Superior Double Room',
-                    checkIn: 'Tue, 11 Mar 2025',
-                    checkInTime: '14:00',
-                    checkOut: 'Fri, 14 Mar 2025',
+                    image: 'assets/images/Nexario Hotel.png',
+                    hotelName: 'Nexario Hotel',
+                    location: 'Abiansemal, Badung,Bali',
+                    room: 'single Suite Room',
+                    checkIn: 'Fri, 28 Feb 2025',
+                    checkInTime: '13:00',
+                    checkOut: 'sat, 01 Mar 2025',
                     checkOutTime: '12:00',
-                    nights: '3 Nights',
-                    total: '\$242.40',
+                    nights: '1 Nights',
+                    total: '\$132.40',
                   ),
                   SizedBox(height: 16),
                   _BookingCard(
-                    image: 'assets/images/himage2.png',
-                    hotelName: 'Imperium Hotel',
-                    location: 'Sanur, South Denpasar, Bali',
-                    room: 'Family Suite Room',
-                    checkIn: 'Wed, 02 Apr 2025',
+                    image: 'assets/images/Homingo Hotel.png',
+                    hotelName: 'Homingo Hotel',
+                    location: 'serangan, Denpasar, Bali',
+                    room: 'Double Deluxe Room',
+                    checkIn: 'Fri, 14 Feb 2025',
                     checkInTime: '14:00',
-                    checkOut: 'Thr, 03 Apr 2025',
+                    checkOut: 'sun, 16 Feb 2025',
                     checkOutTime: '12:00',
-                    nights: '1 Night',
+                    nights: '2 Night',
                     total: '\$148.20',
                   ),
                 ],
@@ -120,8 +121,8 @@ class TabButtons extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _SingleTab(text: 'Upcoming', selected: true),
-          _SingleTab(text: 'Completed', selected: false),
+          _SingleTab(text: 'Upcoming', selected: false),
+          _SingleTab(text: 'Completed', selected: true),
           _SingleTab(text: 'Canceled', selected: false),
         ],
       ),
@@ -200,8 +201,8 @@ class _BookingCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   child: Image.asset(
                     image,
-                    width: 70,
-                    height: 70,
+                    width: 100, // changed from 70 to 100
+                    height: 64, // changed from 70 to 64
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -286,7 +287,7 @@ class _BookingCard extends StatelessWidget {
                       nights,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.green,
+                        color: Colors.grey,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -338,35 +339,37 @@ class _BookingCard extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 0,
+                      ), // Reduce padding
+                      minimumSize: Size(0, 40), // Set a fixed height
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
-                    child: Text('Reschedule'),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        'Re-Book',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(width: 8),
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: Colors.red,
-                      side: BorderSide(color: Colors.red),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    child: Text('Cancel'),
-                  ),
-                ),
+
                 SizedBox(width: 8),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF23C465),
+                      foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: Text('E-Receipt'),
+                    child: Text('Add Review'),
                   ),
                 ),
               ],
@@ -390,11 +393,12 @@ class CustomBottomNavBar extends StatelessWidget {
       currentIndex: currentIndex,
       onTap: onTap ?? (index) {},
       showUnselectedLabels: true,
-      selectedItemColor: Colors.green,
+
+      ///selectedItemColor: Colors.green,
       unselectedItemColor: Colors.grey,
       type: BottomNavigationBarType.fixed,
       items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
         BottomNavigationBarItem(
           icon: Icon(Icons.favorite_border),
           label: "Favorite",
@@ -425,8 +429,19 @@ class CustomBottomNavBar extends StatelessWidget {
           ),
           label: "",
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.book), label: "Bookings"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+        BottomNavigationBarItem(
+          icon: Image.asset(
+            'assets/icons/Ticket.png',
+            color: Color(0xFF23C465),
+            width: 24,
+            height: 24,
+          ),
+          label: 'Bookings',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_2_outlined),
+          label: "Profile",
+        ),
       ],
     );
   }
