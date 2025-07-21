@@ -64,7 +64,7 @@ class _AddGuestSectionState extends State<AddGuestSectionH> {
                 infants = value;
               });
             }),
-            SizedBox(height: 24.0),
+            SizedBox(height: 18),
             SizedBox(
               width: double.infinity,
               height: 44,
@@ -72,7 +72,7 @@ class _AddGuestSectionState extends State<AddGuestSectionH> {
                 onPressed: () {  },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green, // Example color
-                  padding: EdgeInsets.symmetric(vertical: 16.0),
+                 // padding: EdgeInsets.symmetric(vertical: 16.0),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),

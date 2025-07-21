@@ -20,7 +20,7 @@ class _AdditionalRequestsSheetState extends State<AdditionalRequestsSheet> {
 
     'Balcony with a view': true,
 
-    'Other request': false,
+    'Other ': false,
   };
 
   @override

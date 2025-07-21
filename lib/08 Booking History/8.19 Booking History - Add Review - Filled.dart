@@ -22,7 +22,11 @@ class AddReviewScreenFilled extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+                padding: EdgeInsets.only(left: 6),
+                icon: const Icon(Icons.arrow_back_ios, color: Colors.white,size: 16,),
+                style: IconButton.styleFrom(backgroundColor: Colors.green[600],
+                shape: CircleBorder()
+                ),
                 onPressed: () => Navigator.pop(context),
               ),
               const Expanded(
@@ -150,7 +154,7 @@ class AddReviewScreenFilled extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 5),
+                  SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
@@ -161,7 +165,7 @@ class AddReviewScreenFilled extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Divider(),
+
                   SizedBox(height: 5),
                   Align(
                     alignment: Alignment.centerLeft,
@@ -190,8 +194,8 @@ class AddReviewScreenFilled extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 6),
-                  Divider(),
+                  SizedBox(height: 16),
+
 
                   Align(
                     alignment: Alignment.centerLeft,

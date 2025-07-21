@@ -15,7 +15,9 @@ class BookingHistoryRescheduleScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF19BF6E),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+          padding: EdgeInsets.only(left: 6),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white,size: 18,),
+          style: IconButton.styleFrom(backgroundColor: Colors.green[600],shape: CircleBorder()),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(

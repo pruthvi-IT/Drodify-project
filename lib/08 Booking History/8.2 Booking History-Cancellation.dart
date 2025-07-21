@@ -40,13 +40,11 @@ class _BookingCancellationPageState extends State<BookingCancellationPage> {
               ),
             ),
           ),
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 8),
-            child: CircleAvatar(
-              backgroundColor: const Color.fromARGB(255, 85, 187, 88),
-              child: Icon(Icons.arrow_back_ios, color: Colors.white),
-            ),
-          ),
+          leading: IconButton(
+            padding: EdgeInsets.only(left: 6),
+            onPressed: ()=>Navigator.of(context).pop(),
+            icon: Icon(Icons.arrow_back_ios, color: Colors.white,size: 18,),
+            style: IconButton.styleFrom(backgroundColor: Colors.green[600],shape: CircleBorder()),),
           title: Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
@@ -285,9 +283,10 @@ class _BookingCancellationPageState extends State<BookingCancellationPage> {
                                     });
                                   },
                                 ),
+
                                 Text(
                                   reasons[index],
-                                  style: TextStyle(fontSize: 15),
+                                  style: TextStyle(fontSize: 15,),
                                 ),
                               ],
                             ),

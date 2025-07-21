@@ -13,11 +13,11 @@ class BookingHistoryEReceipt extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 7, 199, 106),
           elevation: 0,
           leading: IconButton(
-            padding: const EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.only(left: 6),
             icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
-              size: 20,
+              size: 18,
             ),
             style: IconButton.styleFrom(
               backgroundColor: Colors.green[600],
@@ -26,17 +26,21 @@ class BookingHistoryEReceipt extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: const Text(
-            'Reschedule Booking',
+            'E-Receipt',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
-            IconButton(
-              icon: const Icon(Icons.share, color: Colors.white, size: 20),
-              style: IconButton.styleFrom(
-                backgroundColor: Colors.green[600],
-                shape: const CircleBorder(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(
+
+                icon: const Icon(Icons.share, color: Colors.white, size: 18),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.green[600],
+                  shape: const CircleBorder(),
+                ),
+                onPressed: () {},
               ),
-              onPressed: () {},
             ),
           ],
           centerTitle: true,

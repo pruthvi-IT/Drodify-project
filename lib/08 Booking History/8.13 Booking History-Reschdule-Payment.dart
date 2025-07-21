@@ -11,12 +11,14 @@ class BookingHistoryPayment extends StatelessWidget {
         backgroundColor: const Color(0xFF19BF6E),
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+          padding: EdgeInsets.only(left: 6),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white,size: 18,),
+          style: IconButton.styleFrom(backgroundColor: Colors.green[600],shape: CircleBorder()),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
           'Reschedule Booking',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white,),
         ),
         centerTitle: true,
       ),
@@ -79,24 +81,28 @@ class BookingHistoryPayment extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Stepper
-            Row(
-              children: [
-                _StepCircle(isActive: false, label: '1'),
-                const SizedBox(width: 8),
-                const Text('Booking', style: TextStyle(color: Colors.grey)),
-                const SizedBox(width: 8),
-                _StepperLine(),
-                const SizedBox(width: 8),
-                _StepCircle(isActive: false, label: '2'),
-                const SizedBox(width: 8),
-                const Text('Guest info', style: TextStyle(color: Colors.grey)),
-                const SizedBox(width: 8),
-                _StepperLine(),
-                const SizedBox(width: 8),
-                _StepCircle(isActive: true, label: '3'),
-                const SizedBox(width: 8),
-                const Text('Payment', style: TextStyle(color: Colors.green)),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+
+                children: [
+                  _StepCircle(isActive: false, label: '1'),
+                  const SizedBox(width: 8),
+                  const Text('Booking', style: TextStyle(color: Colors.grey)),
+                  const SizedBox(width: 8),
+                  _StepperLine(),
+                  const SizedBox(width: 8),
+                  _StepCircle(isActive: false, label: '2'),
+                  const SizedBox(width: 8),
+                  const Text('Guest info', style: TextStyle(color: Colors.grey)),
+                  const SizedBox(width: 8),
+                  _StepperLine(),
+                  const SizedBox(width: 8),
+                  _StepCircle(isActive: true, label: '3'),
+                  const SizedBox(width: 8),
+                  const Text('Payment', style: TextStyle(color: Colors.green)),
+                ],
+              ),
             ),
             const SizedBox(height: 16),
             Container(
@@ -210,10 +216,12 @@ class BookingHistoryPayment extends StatelessWidget {
             const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.credit_card, size: 20, color: Colors.blue),
-                SizedBox(width: 8),
+                Icon(Icons.credit_card, size: 20, color: Colors.green),
+                SizedBox(width: 4),
+                Text('visa',style: TextStyle(color: Colors.blue),),
+                SizedBox(width: 4),
                 Text('**** **** **** 8562'),
-                SizedBox(width: 220),
+                SizedBox(width: 190),
                 Icon(Icons.arrow_forward_ios, size: 16, color: Colors.grey),
               ],
             ),
