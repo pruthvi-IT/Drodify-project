@@ -23,9 +23,14 @@ class AddReviewScreenFilled extends StatelessWidget {
             children: [
               IconButton(
                 padding: EdgeInsets.only(left: 6),
-                icon: const Icon(Icons.arrow_back_ios, color: Colors.white,size: 16,),
-                style: IconButton.styleFrom(backgroundColor: Colors.green[600],
-                shape: CircleBorder()
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                  size: 16,
+                ),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black.withOpacity(0.2),
+                  shape: CircleBorder(),
                 ),
                 onPressed: () => Navigator.pop(context),
               ),
@@ -195,7 +200,6 @@ class AddReviewScreenFilled extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
-
 
                   Align(
                     alignment: Alignment.centerLeft,

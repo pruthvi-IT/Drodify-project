@@ -20,7 +20,7 @@ class BookingHistoryEReceipt extends StatelessWidget {
               size: 18,
             ),
             style: IconButton.styleFrom(
-              backgroundColor: Colors.green[600],
+              backgroundColor: Colors.black.withOpacity(0.2),
               shape: const CircleBorder(),
             ),
             onPressed: () => Navigator.of(context).pop(),
@@ -33,10 +33,9 @@ class BookingHistoryEReceipt extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: IconButton(
-
                 icon: const Icon(Icons.share, color: Colors.white, size: 18),
                 style: IconButton.styleFrom(
-                  backgroundColor: Colors.green[600],
+                  backgroundColor: Colors.black.withOpacity(0.2),
                   shape: const CircleBorder(),
                 ),
                 onPressed: () {},

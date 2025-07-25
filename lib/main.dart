@@ -2,22 +2,16 @@
 //import 'package:drodify_project/04HomeScreen/4.8%20Search%20Result-empty.dart';
 //import 'package:drodify_project/04HomeScreen/4.9%20notification-default.dart';
 
+import 'package:drodify_project/04HomeScreen/4.9%20notification-default.dart';
+import 'package:drodify_project/05%20Home%20Detail%20Screen/5.1%20Hotel%20Details.dart';
+import 'package:drodify_project/05%20Home%20Detail%20Screen/5.2%20Hotel%20Details-Scrolling%201.dart';
+import 'package:drodify_project/05%20Home%20Detail%20Screen/5.3%20Hotel%20Details-Scrolling%202.dart';
+import 'package:drodify_project/05%20Home%20Detail%20Screen/5.7%20All%20Review.dart';
+import 'package:drodify_project/05%20Home%20Detail%20Screen/5.9%20All%20Review-Open%20Picture.dart';
 import 'package:drodify_project/08%20Booking%20History/8.1%20Booking%20%20History-upcoming.dart';
-import 'package:drodify_project/08%20Booking%20History/8.11%20Booking%20History-Reschdule-Info%20Changed.dart';
-import 'package:drodify_project/08%20Booking%20History/8.12%20Booking-History-Reschdule-Conformation.dart';
-import 'package:drodify_project/08%20Booking%20History/8.13%20Booking%20History-Reschdule-Payment.dart';
-import 'package:drodify_project/08%20Booking%20History/8.14%20Booking%20History-Reschudule%20Succeed.dart';
-import 'package:drodify_project/08%20Booking%20History/8.15%20Booking%20History-Reschdule-Failed.dart';
-import 'package:drodify_project/08%20Booking%20History/8.16%20Booking%20History-E-Receipt.dart';
-import 'package:drodify_project/08%20Booking%20History/8.17%20Booking%20History-Completed.dart';
-import 'package:drodify_project/08%20Booking%20History/8.18%20Booking%20History-Add%20Review-Default.dart';
-import 'package:drodify_project/08%20Booking%20History/8.19%20Booking%20History%20-%20Add%20Review%20-%20Filled.dart';
-import 'package:drodify_project/08%20Booking%20History/8.2%20Booking%20History-Cancellation.dart';
-import 'package:drodify_project/08%20Booking%20History/8.20%20Booking%20History-Canceled.dart';
-import 'package:drodify_project/08%20Booking%20History/8.21%20Booking%20History-Empty.dart';
-import 'package:drodify_project/08%20Booking%20History/8.9%20Booking%20History-Reschdule-filled.dart';
-
-//import 'package:drodify_project/Ai/10.1%20Ai-Default.dart';
+import 'package:drodify_project/10.5%20AI-Hotel%20Details.dart';
+import 'package:drodify_project/6.17%20Payment-Promo%20Code%20Success.dart';
+import 'package:drodify_project/7.9%20select%20Hotel%20to%20Delete.dart';
 import 'package:flutter/material.dart';
 
 import '08 Booking History/8.10 Booking History-Recent-Guest info.dart';
@@ -39,7 +33,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:  BookingHistory(),
+      home: BookingHistory(),
     );
   }
 }

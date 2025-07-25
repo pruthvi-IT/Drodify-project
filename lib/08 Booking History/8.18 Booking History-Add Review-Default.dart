@@ -18,8 +18,15 @@ class AddReviewScreen extends StatelessWidget {
             children: [
               IconButton(
                 padding: EdgeInsets.only(left: 6),
-                icon: const Icon(Icons.arrow_back_ios, color: Colors.white,size: 18,),
-                style: IconButton.styleFrom(backgroundColor: Colors.green[600],shape: CircleBorder()),
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                  size: 18,
+                ),
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black.withOpacity(0.2),
+                  shape: CircleBorder(),
+                ),
                 onPressed: () => Navigator.pop(context),
               ),
               const Expanded(

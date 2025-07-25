@@ -15,7 +15,7 @@ class RescheduleSuccessScreen extends StatelessWidget {
           padding: EdgeInsets.only(left: 8),
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 20),
           style: IconButton.styleFrom(
-            backgroundColor: Colors.green[600],
+            backgroundColor: Colors.black.withOpacity(0.2),
             shape: CircleBorder(),
           ),
           onPressed: () {

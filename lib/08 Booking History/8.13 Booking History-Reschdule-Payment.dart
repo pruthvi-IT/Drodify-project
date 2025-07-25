@@ -12,13 +12,16 @@ class BookingHistoryPayment extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           padding: EdgeInsets.only(left: 6),
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white,size: 18,),
-          style: IconButton.styleFrom(backgroundColor: Colors.green[600],shape: CircleBorder()),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 18),
+          style: IconButton.styleFrom(
+            backgroundColor: Colors.black.withOpacity(0.2),
+            shape: CircleBorder(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
           'Reschedule Booking',
-          style: TextStyle(color: Colors.white,),
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),
@@ -84,7 +87,6 @@ class BookingHistoryPayment extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-
                 children: [
                   _StepCircle(isActive: false, label: '1'),
                   const SizedBox(width: 8),
@@ -94,7 +96,10 @@ class BookingHistoryPayment extends StatelessWidget {
                   const SizedBox(width: 8),
                   _StepCircle(isActive: false, label: '2'),
                   const SizedBox(width: 8),
-                  const Text('Guest info', style: TextStyle(color: Colors.grey)),
+                  const Text(
+                    'Guest info',
+                    style: TextStyle(color: Colors.grey),
+                  ),
                   const SizedBox(width: 8),
                   _StepperLine(),
                   const SizedBox(width: 8),
@@ -218,7 +223,7 @@ class BookingHistoryPayment extends StatelessWidget {
               children: [
                 Icon(Icons.credit_card, size: 20, color: Colors.green),
                 SizedBox(width: 4),
-                Text('visa',style: TextStyle(color: Colors.blue),),
+                Text('visa', style: TextStyle(color: Colors.blue)),
                 SizedBox(width: 4),
                 Text('**** **** **** 8562'),
                 SizedBox(width: 190),

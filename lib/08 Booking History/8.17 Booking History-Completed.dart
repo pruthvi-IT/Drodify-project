@@ -39,15 +39,13 @@ class BookingHistoryScreenCompleted extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                CircleAvatar(
-                  backgroundColor: const Color.fromARGB(
-                    255,
-                    40,
-                    109,
-                    76,
-                  ).withOpacity(0.2),
-                  radius: 18,
-                  child: Icon(Icons.add, color: Colors.white, size: 20),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.add, color: Colors.white, size: 18),
+                  style: IconButton.styleFrom(
+                    backgroundColor: Colors.black.withOpacity(0.2),
+                    shape: CircleBorder(),
+                  ),
                 ),
               ],
             ),

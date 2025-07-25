@@ -16,9 +16,6 @@ class EmptyNotification extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            // borderRadius: BorderRadius.vertical(
-            //   bottom: Radius.circular(24),
-            // ),
           ),
           child: SafeArea(
             child: Padding(
@@ -26,7 +23,16 @@ class EmptyNotification extends StatelessWidget {
               child: Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                    padding: EdgeInsets.only(left: 6),
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.black.withOpacity(0.2),
+                      shape: CircleBorder(),
+                    ),
                     onPressed: () => Navigator.pop(context),
                   ),
                   Expanded(
@@ -43,11 +49,13 @@ class EmptyNotification extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {},
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white.withOpacity(0.2),
-                      radius: 20,
-                      backgroundImage:
-                          AssetImage('assets/icons/Icon Button Light.png'),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset('assets/icons/whiteslider.png'),
+                      style: IconButton.styleFrom(
+                        backgroundColor: Colors.black.withOpacity(0.2),
+                        shape: CircleBorder(),
+                      ),
                     ),
                   ),
                 ],
@@ -85,10 +93,7 @@ class EmptyNotification extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: Text(
                       "You're all caught up! Check back later for updates,\n deals and import alerts.",
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 15,
-                      ),
+                      style: TextStyle(color: Colors.grey[600], fontSize: 15),
                       textAlign: TextAlign.center,
                     ),
                   ),

@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                     },
                     child: CircleAvatar(
                       radius: 22,
-                      backgroundColor: const Color.fromARGB(255, 25, 116, 28),
+                      backgroundColor:Colors.black.withOpacity(0.2),
                       child: Icon(
                         Icons.notifications_none,
                         color: Colors.white,

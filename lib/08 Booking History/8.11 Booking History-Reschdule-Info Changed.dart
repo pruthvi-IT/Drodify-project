@@ -20,8 +20,11 @@ class _BookingHistoryRescheduleScreenGuestInfoState
         elevation: 0,
         leading: IconButton(
           padding: EdgeInsets.only(left: 6),
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white,size: 18,),
-          style: IconButton.styleFrom(backgroundColor: Colors.green[600],shape: CircleBorder()),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 18),
+          style: IconButton.styleFrom(
+            backgroundColor: Colors.black.withOpacity(0.2),
+            shape: CircleBorder(),
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
@@ -100,15 +103,14 @@ class _BookingHistoryRescheduleScreenGuestInfoState
               ),
             ),
             onPressed: () {
-                showModalBottomSheet(
-  context: context,
-  isScrollControlled: true,
-  shape: const RoundedRectangleBorder(
-    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-  ),
-  builder: (context) => const RescheduleConfirmationSheet(),
-);
-
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                ),
+                builder: (context) => const RescheduleConfirmationSheet(),
+              );
             },
             child: const Text(
               "Proceed to Payment",

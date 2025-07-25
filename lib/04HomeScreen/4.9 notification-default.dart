@@ -17,9 +17,6 @@ class NotificationScreen extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
-            // borderRadius: BorderRadius.vertical(
-            //   bottom: Radius.circular(24),
-            // ),
           ),
           child: SafeArea(
             child: Padding(
@@ -27,7 +24,16 @@ class NotificationScreen extends StatelessWidget {
               child: Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                    padding: EdgeInsets.only(left: 6),
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.black.withOpacity(0.2),
+                      shape: CircleBorder(),
+                    ),
                     onPressed: () => Navigator.pop(context),
                   ),
                   Expanded(
@@ -51,11 +57,12 @@ class NotificationScreen extends StatelessWidget {
                         builder: (context) => FilterBottomSheetN(),
                       );
                     },
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white.withOpacity(0.2),
-                      radius: 20,
-                      backgroundImage: AssetImage(
-                        'assets/icons/SlidersHorizontal.png',
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Image.asset('assets/icons/whiteslider.png'),
+                      style: IconButton.styleFrom(
+                        backgroundColor: Colors.black.withOpacity(0.2),
+                        shape: CircleBorder(),
                       ),
                     ),
                   ),
