@@ -1,4 +1,5 @@
 import 'package:drodify_project/7.10%20Delete%20Hotel.dart';
+import 'package:drodify_project/7.7%20Collection-Filter.dart';
 import 'package:flutter/material.dart';
 
 class HotelListScreen extends StatefulWidget {
@@ -141,14 +142,35 @@ class _HotelListScreenState extends State<HotelListScreen> {
           const SizedBox(width: 12),
 
           // Filter Button
-          Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              color: Colors.grey.shade100,
-              borderRadius: BorderRadius.circular(12),
+          GestureDetector(
+            onTap: () {
+             showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (context) => FractionallySizedBox(
+                  heightFactor: 0.85,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(24),
+                      ),
+                    ),
+                    child: FilterBottomSheet2(),
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Image.asset('assets/icons/SlidersHorizontal.png'),
             ),
-            child: Image.asset('assets/icons/SlidersHorizontal.png'),
           ),
         ],
       ),

@@ -2,6 +2,7 @@
 //import 'package:drodify_project/04HomeScreen/4.8%20Search%20Result-empty.dart';
 //import 'package:drodify_project/04HomeScreen/4.9%20notification-default.dart';
 
+import 'package:drodify_project/04HomeScreen/4.6%20search%20details.dart';
 import 'package:drodify_project/04HomeScreen/4.9%20notification-default.dart';
 import 'package:drodify_project/05%20Home%20Detail%20Screen/5.1%20Hotel%20Details.dart';
 import 'package:drodify_project/05%20Home%20Detail%20Screen/5.2%20Hotel%20Details-Scrolling%201.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: BookingHistory(),
+      home: HotelListScreen(),
     );
   }
 }

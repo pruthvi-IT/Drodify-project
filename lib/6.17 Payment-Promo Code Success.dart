@@ -749,9 +749,9 @@ class promooverlaysheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 376,
-      width: 396,
-      margin: EdgeInsets.only(bottom: 200),
+      height: 396,
+      width: 386,
+      margin: EdgeInsets.only(bottom: 220),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),

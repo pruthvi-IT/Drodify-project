@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class FilterBottomSheet extends StatefulWidget {
+class FilterBottomSheet2 extends StatefulWidget {
   @override
-  State<FilterBottomSheet> createState() => _FilterBottomSheetState();
+  State<FilterBottomSheet2> createState() => _FilterBottomSheetState();
 }
 
-class _FilterBottomSheetState extends State<FilterBottomSheet> {
+class _FilterBottomSheetState extends State<FilterBottomSheet2> {
   int selectedRating = 4;
   double minPrice = 20;
   double maxPrice = 150;

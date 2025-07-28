@@ -88,25 +88,25 @@ void showReviewModal(BuildContext context) {
               'It was amazing! Perfect beachfront location, friendly staff, and beautifully designed rooms. Can’t wait to reservation again :)',
               style: TextStyle(height: 1.4),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 12),
 
-            // All Reviews Button
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle view all reviews
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  padding: EdgeInsets.symmetric(vertical: 14),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    padding: EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
-                ),
-                child: Text(
-                  'All Reviews',
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  child: Text(
+                    'All Reviews',
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                  ),
                 ),
               ),
             ),
